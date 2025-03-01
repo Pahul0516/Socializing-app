@@ -1,0 +1,76 @@
+CREATE TABLE credentials (
+    id_credentials SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE,
+    password VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE users (
+    id_user SERIAL PRIMARY KEY,
+    id_credentials INT UNIQUE REFERENCES credentials(id_credentials) ON DELETE CASCADE,
+    firstname VARCHAR(255),
+    lastname VARCHAR(255)
+);
+
+CREATE TABLE friendship_status (
+    id_status SERIAL PRIMARY KEY,
+    id_user_request INT REFERENCES users(id_user) ON DELETE CASCADE,
+    id_user_receive INT REFERENCES users(id_user) ON DELETE CASCADE,
+    status VARCHAR(255) CHECK (status IN ('accepted', 'pending', 'rejected'))
+);
+
+CREATE TABLE messages(
+    id_message SERIAL PRIMARY KEY,
+    id_reply_message INT,
+	id_from_user INT,
+	id_to_user INT,
+    id_friendship INT REFERENCES friendships(id_friendship) ON DELETE CASCADE,
+    text VARCHAR(255)
+);
+
+CREATE TABLE friendships (
+    id_friendship SERIAL PRIMARY KEY,
+    id_user1 INT REFERENCES users(id_user) ON DELETE CASCADE,
+    id_user2 INT REFERENCES users(id_user) ON DELETE CASCADE,
+    id_status INT REFERENCES friendship_status(id_status) ON DELETE CASCADE,
+    friendship_date DATE
+);
+
+ALTER SEQUENCE users_id_user_seq RESTART WITH 1;
+ALTER SEQUENCE credentials_id_credentials_seq RESTART WITH 100;
+ALTER SEQUENCE friendship_status_id_status_seq RESTART WITH 200;
+ALTER SEQUENCE friendships_id_friendship_seq RESTART WITH 300;
+ALTER SEQUENCE messages_id_message_seq RESTART WITH 400;
+
+-- Insert 5 records into the credentials table with realistic emails and passwords
+INSERT INTO credentials (email, password) VALUES
+('john.doe@example.com', 'john1234'),
+('jane.smith@example.com', 'jane5678'),
+('alice.johnson@example.com', 'aliceqwerty'),
+('bob.brown@example.com', 'bobpassword1'),
+('charlie.davis@example.com', 'charliepass123');
+
+-- Insert 5 records into the users table, referencing credentials
+INSERT INTO users (id_credentials, firstname, lastname) VALUES
+(100, 'John', 'Doe'),
+(101, 'Jane', 'Smith'),
+(102, 'Alice', 'Johnson'),
+(103, 'Bob', 'Brown'),
+(104, 'Charlie', 'Davis');
+
+-- Insert 5 records into the friendship_status table with realistic statuses
+INSERT INTO friendship_status (id_user_request, id_user_receive, status) VALUES
+(1, 2, 'accepted'),  -- John and Jane are friends
+(2, 3, 'pending'),   -- Jane has sent a friend request to Alice
+(3, 4, 'rejected'),  -- Alice's friend request to Bob was rejected
+(4, 5, 'accepted'),  -- Bob and Charlie are friends
+(5, 1, 'pending');   -- Charlie has sent a friend request to John
+
+-- Insert 5 records into the friendships table with realistic friendship dates
+INSERT INTO friendships (id_user1, id_user2, id_status, friendship_date) VALUES
+(1, 2, 200, '2024-01-15'),  -- John and Jane became friends on Jan 15, 2024
+(2, 3, 201, '2024-02-20'),  -- Jane sent a friend request to Alice on Feb 20, 2024
+(3, 4, 202, '2024-03-10'),  -- Alice sent a friend request to Bob but it was rejected on Mar 10, 2024
+(4, 5, 203, '2024-04-05'),  -- Bob and Charlie became friends on Apr 5, 2024
+(5, 1, 204, '2024-05-12');  -- Charlie sent a friend request to John on May 12, 2024
+
+

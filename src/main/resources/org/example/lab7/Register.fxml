@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.PasswordField?>
+<VBox fx:id="out" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleClickOutside" prefHeight="366.0" prefWidth="458.0" spacing="5.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab7.Controller.Controller_register">
+   <children>
+      <VBox alignment="CENTER" prefHeight="97.0" prefWidth="458.0">
+         <children>
+            <Label text="Register">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefWidth="458.0" spacing="5.0">
+         <children>
+            <TextField fx:id="lastname_text_field" alignment="CENTER" promptText="Nume">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+            <TextField fx:id="firstname_text_field" alignment="CENTER" promptText="Prenume" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="458.0" spacing="20.0">
+         <children>
+            <Label fx:id="error_lastname" prefHeight="15.0" prefWidth="136.0" text="Numele trebuie completat" textFill="RED" visible="false">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </Label>
+            <Label fx:id="error_firstname" prefHeight="15.0" prefWidth="139.0" text="Prenumele trebuie completat" textFill="RED" visible="false">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="7.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="-6.0" />
+         </padding>
+         <VBox.margin>
+            <Insets top="-6.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <TextField fx:id="email_text_field" prefHeight="26.0" prefWidth="306.0" promptText="Email">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <Label fx:id="error_email" prefHeight="0.0" prefWidth="303.0" text="Invalid Email" textFill="RED" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="-6.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="-6.0" />
+         </padding>
+      </Label>
+      <HBox alignment="CENTER">
+         <children>
+            <PasswordField fx:id="password1_text_field" prefHeight="26.0" prefWidth="306.0" promptText="Parola" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <Label fx:id="error_password" prefHeight="0.0" prefWidth="303.0" text="Invalid Password" textFill="RED" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+         <padding>
+            <Insets bottom="-6.0" />
+         </padding>
+         <VBox.margin>
+            <Insets top="-6.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER">
+         <children>
+            <PasswordField fx:id="password2_text_field" prefHeight="26.0" prefWidth="307.0" promptText="Confirmare parola">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </PasswordField>
+         </children>
+      </HBox>
+      <Label fx:id="error_confirm_password" prefHeight="0.0" prefWidth="303.0" text="Invalid Confirmation" textFill="RED" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+         <padding>
+            <Insets bottom="-6.0" />
+         </padding>
+         <VBox.margin>
+            <Insets top="-6.0" />
+         </VBox.margin>
+      </Label>
+      <VBox alignment="CENTER" prefHeight="40.0" prefWidth="283.0">
+         <children>
+            <Button fx:id="btn_register" mnemonicParsing="false" onAction="#add_user" prefHeight="26.0" prefWidth="307.0" text="Register" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="0.0" prefWidth="458.0">
+         <children>
+            <Label text="Already have an account? ">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="-8.0" />
+               </padding>
+            </Label>
+            <Hyperlink fx:id="link_login" onAction="#open_login" text="SignIn">
+               <padding>
+                  <Insets top="-2.0" />
+               </padding>
+            </Hyperlink>
+         </children>
+      </VBox>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</VBox>

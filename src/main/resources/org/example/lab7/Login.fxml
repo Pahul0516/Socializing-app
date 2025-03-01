@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.PasswordField?>
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleClickOutside" prefHeight="272.0" prefWidth="283.0" spacing="5.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab7.Controller.Controller_login">
+   <children>
+      <VBox alignment="CENTER" prefHeight="104.0" prefWidth="283.0">
+         <children>
+            <Label text="LogIn">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Label text="Email " />
+            <TextField fx:id="email_text_field">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets left="15.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Label text="Password " />
+            <PasswordField fx:id="password_text_field" />
+         </children>
+         <VBox.margin>
+            <Insets right="6.0" />
+         </VBox.margin>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="40.0" prefWidth="283.0">
+         <children>
+            <Button fx:id="btn_login" mnemonicParsing="false" onAction="#open_main_page" text="Login" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="0.0" prefWidth="283.0">
+         <children>
+            <Label text="Don't you have an account?">
+               <padding>
+                  <Insets top="-8.0" />
+               </padding>
+            </Label>
+            <Hyperlink fx:id="link_register" onAction="#open_register" text="Register">
+               <padding>
+                  <Insets top="-2.0" />
+               </padding>
+            </Hyperlink>
+            <Label fx:id="error_label" text="Invalid email or pessword!" textFill="RED" visible="false" />
+         </children>
+      </VBox>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</VBox>
